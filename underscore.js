@@ -14,9 +14,9 @@ _.each({one: 1, two: 2, three: 3}, alert);
 var each = function(list, iteratee){
 
 	if(Array.isArray(list)){
-		list.forEach(function(item){
-			iteratee(item);
-		});
+		for(var i = 0; i < list.length; i++){
+			iteratee(list[i]);
+		}
 	}else if(typeof list === 'object'){
 		for(var item in list){
 			iteratee(list[item]);
@@ -119,10 +119,11 @@ var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 */
 
 var find = function(list,predicate){
+	
+	each(list,function(val){
+		if(predicate(val)) return val;
+	});
 
-	for(var i=0;i<list.length;i++){
-		if(predicate(list[i]))return list[i];
-	}
 }
 
 console.log(find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
