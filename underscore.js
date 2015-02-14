@@ -218,7 +218,7 @@ _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
 
   var findWhere = function(list,properties){
   	//same as find, but only return the first object
-
+  	
   	for(var i=0;i<list.length;i++){
   		var val = list[i];
   		var match = 0;
@@ -229,8 +229,8 @@ _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
   		}
 	}
 
-//var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
-//console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
+var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
+console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
 
 
 /*reject_.reject(list, predicate, [context]) 
@@ -254,3 +254,19 @@ var reject = function(list,predicate){
 //console.log(reject([1,2,3,4,5,6],function(num) {return num % 2 == 0;}));
 
 
+/*	every_.every(list, [predicate], [context]) Alias: all 
+Returns true if all of the values in the list pass the predicate truth test.
+
+_.every([true, 1, null, 'yes'], _.identity);
+=> false */
+
+var every = function(list,predicate){
+	this.result = true;
+
+	each(list,function(value){
+		if(!predicate(value)) this.result = false;
+	});
+	return this.result;
+}
+
+console.log(every([1,2,3,4,5],function(num){ return num < 5;}));
