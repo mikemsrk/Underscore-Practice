@@ -229,8 +229,8 @@ _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
   		}
 	}
 
-var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
-console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
+//var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
+//console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
 
 
 /*reject_.reject(list, predicate, [context]) 
@@ -269,4 +269,30 @@ var every = function(list,predicate){
 	return this.result;
 }
 
-console.log(every([1,2,3,4,5],function(num){ return num < 5;}));
+//console.log(every([1,2,3,4,5],function(num){ return num < 5;}));
+
+/*	some_.some(list, [predicate], [context]) Alias: any 
+Returns true if any of the values in the list pass the predicate truth test. Short-circuits and stops traversing the list if a true element is found.
+
+_.some([null, 0, 'yes', false]);
+=> true*/
+
+var some = function(list,predicate){
+	if(predicate === undefined){
+		predicate = function(val){return val;};
+	}
+
+	if(Array.isArray(list)){
+		for(var i=0;i<list.length;i++){
+			if(predicate(list[i])) return true;
+		}
+	}else if(typeof list === 'object'){
+		for(var i in list){
+			if(predicate(list[i])) return true;
+		}
+
+	}
+	return false;
+}
+
+//console.log(some([null,0,'yes',false]));
