@@ -316,3 +316,35 @@ var contains = function(list,value){
 
 //console.log(contains([1,2,3],4));
 //console.log(contains({a:1,b:2,c:3},4));
+
+/*	invoke_.invoke(list, methodName, *arguments) 
+Calls the method named by methodName on each value in the list. Any extra arguments passed to invoke will be forwarded on to the method invocation.
+
+_.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
+=> [[1, 5, 7], [1, 2, 3]]*/
+
+var invoke = function(list,methodName){
+
+
+
+}
+
+/*	pluck_.pluck(list, propertyName) 
+A convenient version of what is perhaps the most common use-case for map: extracting a list of property values.
+
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.pluck(stooges, 'name');
+=> ["moe", "larry", "curly"]*/
+
+var pluck = function(list,propertyName){
+	var result = [];
+
+	for(var i in list){
+		result.push(list[i][propertyName]);
+	}
+
+	return result;
+
+}
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+console.log(pluck(stooges,'name'));
