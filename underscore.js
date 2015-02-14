@@ -228,6 +228,29 @@ _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
   		if(match === Object.keys(properties).length) return val;
   		}
 	}
-	
-var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
-console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
+
+//var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
+//console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
+
+
+/*reject_.reject(list, predicate, [context]) 
+Returns the values in list without the elements that the truth test (predicate) passes. The opposite of filter.
+
+var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+=> [1, 3, 5]*/
+
+//opposite of filter
+var reject = function(list,predicate){
+	var result = [];
+
+	each(list,function(val){
+		if(!predicate(val)){
+			result.push(val);
+		}
+	});
+	return result;
+}
+
+//console.log(reject([1,2,3,4,5,6],function(num) {return num % 2 == 0;}));
+
+
