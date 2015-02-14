@@ -177,3 +177,31 @@ var filter = function(list,predicate){
 //console.log(filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
 //console.log(filter({a:1,b:2,c:3,d:4,e:5,f:6}, function(num){ return num % 2 == 0; }));
 
+/*	where_.where(list, properties) 
+Looks through each value in the list, returning an array of all the values that contain all of the key-value pairs listed in properties.
+
+_.where(listOfPlays, {author: "Shakespeare", year: 1611});
+=> [{title: "Cymbeline", author: "Shakespeare", year: 1611},
+    {title: "The Tempest", author: "Shakespeare", year: 1611}]*/
+
+var where = function(list,properties){
+	var result = [];
+
+	// loop through each value in list
+	each(list,function(val){
+		var match = 0;
+		//loop through each key in properties, compare against list properties
+		for(var i in properties){
+			if(properties[i] === val[i]) match++;
+		}
+		//if number of matches = length of properties, then pass it to result array.
+		if(match === Object.keys(properties).length) result.push(val);
+	});
+
+	return result;
+
+}
+
+//var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
+//console.log(where(listOfPlays, {author: "Shakespeare", year: 1611}));
+
