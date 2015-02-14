@@ -346,5 +346,29 @@ var pluck = function(list,propertyName){
 	return result;
 
 }
+//var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+//console.log(pluck(stooges,'name'));
+
+/*	max_.max(list, [iteratee], [context]) 
+Returns the maximum value in list. If an iteratee function is provided, it will be used on each value to generate the criterion by which the value is ranked. -Infinity is returned if list is empty, so an isEmpty guard may be required.
+
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-console.log(pluck(stooges,'name'));
+_.max(stooges, function(stooge){ return stooge.age; });
+=> {name: 'curly', age: 60};*/
+
+var max = function(list,iteratee){
+	var that = this.result;
+	var result = 0;
+
+	each(list,function(val){
+		if(iteratee(val) > result) {
+			that = val;
+			result = iteratee(val);
+		}
+	});
+
+	return that;
+}
+
+//var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+//console.log(max(stooges, function(stooge){ return stooge.age; }));
