@@ -399,3 +399,37 @@ var that = this.result;
 }
 //var numbers = [10, 5, 100, 2, 1000];
 //console.log(min(numbers));
+
+/*	sortBy_.sortBy(list, iteratee, [context]) 
+Returns a (stably) sorted copy of list, ranked in ascending order by the results of running each value through iteratee. iteratee may also be the string name of the property to sort by (eg. length).
+
+_.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
+=> [5, 4, 6, 3, 1, 2]*/
+
+var sortBy = function(list,iteratee){
+	var sorted = false;
+	if(!Array.isArray(list) && typeof list === 'object'){
+		var tempArr = [];
+		for(var i in list){
+			tempArr.push(list[i]);
+		}
+		list = tempArr;
+	}
+
+	while(!sorted){
+		sorted = true;
+
+		for(var i=0;i<list.length-1;i++){
+			if(iteratee(list[i]) > iteratee(list[i+1])){
+				sorted = false;
+				var temp = list[i];
+				list[i] = list[i+1];
+				list[i+1] = temp;
+			}
+		}
+	}
+	return list;
+}
+
+//console.log(sortBy([1,2,3,4,5,6],function(num){ return Math.sin(num);}));
+//console.log(sortBy({a:1,b:2,c:3,d:4,e:5,f:6},function(num){return Math.sin(num);}));
