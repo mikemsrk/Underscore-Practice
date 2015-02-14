@@ -372,3 +372,30 @@ var max = function(list,iteratee){
 
 //var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 //console.log(max(stooges, function(stooge){ return stooge.age; }));
+
+/*	min_.min(list, [iteratee], [context]) 
+Returns the minimum value in list. If an iteratee function is provided, it will be used on each value to generate the criterion by which the value is ranked. Infinity is returned if list is empty, so an isEmpty guard may be required.
+
+var numbers = [10, 5, 100, 2, 1000];
+_.min(numbers);
+=> 2*/
+
+var min = function(list,iteratee){
+
+if(iteratee === undefined) iteratee = function(val){return val;};
+var result;
+var that = this.result;
+
+	each(list,function(val){
+		if(result === undefined){result = val;}
+		if(iteratee(val) < result) {
+			result = iteratee(val);
+			that = val;
+		}
+	});
+
+	return that;
+
+}
+//var numbers = [10, 5, 100, 2, 1000];
+//console.log(min(numbers));
