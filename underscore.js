@@ -158,3 +158,22 @@ var find = function(list,predicate){
 //console.log(find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
 //console.log(find({a:1,b:2,c:3,d:4,e:5,f:6},function(num){return num % 2 == 0;}));
 
+/*	filter_.filter(list, predicate, [context]) Alias: select 
+Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
+
+var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+=> [2, 4, 6]*/
+
+var filter = function(list,predicate){
+	var result = [];
+
+	each(list,function(num){
+		if(predicate(num)) result.push(num);
+	});
+
+	return result;
+}
+
+//console.log(filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
+//console.log(filter({a:1,b:2,c:3,d:4,e:5,f:6}, function(num){ return num % 2 == 0; }));
+
