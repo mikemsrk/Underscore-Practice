@@ -83,7 +83,8 @@ var reduce = function(list,iteratee,start){
 }
 
 //console.log(reduce([1,2,3], function(memo,num){return memo + num; }, 0));
-
+//var listO = {a:1,b:2,c:3};
+//console.log(reduce(listO,function(memo,num){return memo + num; }, 0));
 
 /*
 reduceRight_.reduceRight(list, iteratee, memo, [context]) Alias: foldr 
@@ -96,19 +97,34 @@ var flat = _.reduceRight(list, function(a, b) { return a.concat(b); }, []);
 
 
 var reduceRight = function(list,iteratee,start){
-	if(start === undefined){
+
+	if(Array.isArray(list)){
+		//do array things
+		if(start === undefined){
 		start = list.pop();
+		}
+		for(var i=list.length-1;i>=0;i--){
+			start = iteratee(start,list[i]);
+		}
+	}else if(typeof list === 'object'){
+		//do object things
+		var temp = [];
+		for(var item in list){
+			temp.push(list[item]);
+		}
+		for(var i=temp.length-1;i>=0;i--){
+			start = iteratee(start,temp[i]);
+		}
 	}
-	
-	for(var i=list.length-1;i>=0;i--){
-		start = iteratee(start,list[i]);
-	}
+
 
 	return start;
 }
 
 //var list = [[0, 1], [2, 3], [4, 5]];
 //console.log(reduceRight(list, function(a, b) { return a.concat(b); }, []));
+//var listO = {a:[0,1],b:[2,3],c:[4,5]};
+//console.log(reduceRight(listO, function(a, b) { return a.concat(b); }, []));
 
 /*
 find_.find(list, predicate, [context]) Alias: detect 
@@ -118,12 +134,14 @@ var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 => 2
 */
 
-var find = function(list,predicate){
+var find = function(list,predicate){	//skipped for now
 	
 	each(list,function(val){
-		if(predicate(val)) return val;
+		if(predicate(val)) return val; // this doesn't work with each, but works when iterating with a for loop
 	});
 
 }
 
 console.log(find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
+
+
