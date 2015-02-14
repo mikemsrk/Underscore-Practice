@@ -134,14 +134,27 @@ var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 => 2
 */
 
-var find = function(list,predicate){	//skipped for now
+var find = function(list,predicate){
 	
-	each(list,function(val){
+/*	each(list,function(val){
 		if(predicate(val)) return val; // this doesn't work with each, but works when iterating with a for loop
-	});
+	});*/
 
+	if(Array.isArray(list)){
+		//do for loop and return first value that passes predicate
+		for(var i=0; i<list.length;i++){
+			if(predicate(list[i])) return list[i];
+		}
+	}else if(typeof list === 'object'){
+		// do for loop and return first value that passes predicate
+		for(var i in list){
+			if(predicate(list[i])) return list[i];
+		}
+	}
+
+	return undefined;
 }
 
-console.log(find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
-
+//console.log(find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
+//console.log(find({a:1,b:2,c:3,d:4,e:5,f:6},function(num){return num % 2 == 0;}));
 
