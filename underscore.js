@@ -205,3 +205,29 @@ var where = function(list,properties){
 //var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
 //console.log(where(listOfPlays, {author: "Shakespeare", year: 1611}));
 
+/*	findWhere_.findWhere(list, properties) 
+Looks through the list and returns the first value that matches all of the key-value pairs listed in properties.
+
+If no match is found, or if list is empty, undefined will be returned.
+
+_.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
+=> {year: 1918, newsroom: "The New York Times",
+  reason: "For its public service in publishing in full so many official reports,
+  documents and speeches by European statesmen relating to the progress and
+  conduct of the war."}*/
+
+  var findWhere = function(list,properties){
+  	//same as find, but only return the first object
+
+  	for(var i=0;i<list.length;i++){
+  		var val = list[i];
+  		var match = 0;
+  		for(var i in properties){
+  			if(properties[i] === val[i]) match++;
+  		}
+  		if(match === Object.keys(properties).length) return val;
+  		}
+	}
+	
+var listOfPlays = [{title: "Cymbeline", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1611},{title: "The Tempest", author: "Shakespeare", year: 1644}];
+console.log(findWhere(listOfPlays, {author: "Shakespeare", year: 1611}));
