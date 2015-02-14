@@ -296,3 +296,23 @@ var some = function(list,predicate){
 }
 
 //console.log(some([null,0,'yes',false]));
+
+/*	contains_.contains(list, value) Alias: include 
+Returns true if the value is present in the list. Uses indexOf internally, if list is an Array.
+
+_.contains([1, 2, 3], 3);
+=> true*/
+
+var contains = function(list,value){
+	if(Array.isArray(list)){
+		if(list.indexOf(value) !== -1) return true;
+	}else if(typeof list === 'object'){
+		for(var i in list){
+			if(list[i] === value) return true;
+		}
+	}
+	return false;
+}
+
+//console.log(contains([1,2,3],4));
+//console.log(contains({a:1,b:2,c:3},4));
