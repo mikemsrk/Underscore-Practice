@@ -9,7 +9,6 @@ var first = function(array,n){
 	}else{
 		return array.slice(0,n);
 	}
-	
 }
 
 //console.log(first([5,4,3,2,1]));
@@ -20,6 +19,14 @@ Returns everything but the last entry of the array. Especially useful on the arg
 _.initial([5, 4, 3, 2, 1]);
 => [5, 4, 3, 2]*/
 
+var initial = function(array, n){
+	if(n === undefined){return array[array.length-1];}
+	else{
+		return array.slice(-n);
+	}
+}
+
+//console.log(initial([5,4,3,2,1],2));
 
 /*	last_.last(array, [n]) 
 Returns the last element of an array. Passing n will return the last n elements of the array.
