@@ -407,6 +407,10 @@ _.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
 => [5, 4, 6, 3, 1, 2]*/
 
 var sortBy = function(list,iteratee){
+	if(iteratee === undefined){
+		iteratee = function(val){return val;};
+	}
+
 	var sorted = false;
 	if(!Array.isArray(list) && typeof list === 'object'){
 		var tempArr = [];
@@ -451,7 +455,6 @@ var groupBy = function(list,iteratee){
 	// check if the iteratee result is a key in results object
 	// if it already is a key, push original item onto the key
 	// if it is not, set it as key and push original item onto key
-
 	each(list,function(val){
 		if(iteratee(val) in that){
 			that[iteratee(val)].push(val);
@@ -464,3 +467,37 @@ var groupBy = function(list,iteratee){
 
 //console.log(groupBy([1.3,2.1,2.4],function(num){return Math.floor(num);}));
 //console.log(groupBy(['one','two','three'],function(val){return val.length;}));
+
+/*	indexBy_.indexBy(list, iteratee, [context]) 
+Given a list, and an iteratee function that returns a key for each element in the list (or a property name), returns an object with an index of each item. Just like groupBy, but for when you know your keys are unique.
+
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.indexBy(stooges, 'age');
+=> {
+  "40": {name: 'moe', age: 40},
+  "50": {name: 'larry', age: 50},
+  "60": {name: 'curly', age: 60}
+}*/
+
+var indexBy = function(list,iteratee){
+
+	var result = {};
+	var presort = [];
+
+	each(list,function(val){
+		presort.push(val[iteratee]);
+	});
+
+	var sorted = sortBy(presort);
+
+	each(list,function(obj){
+		each(sorted,function(key){
+			if(key === obj[iteratee]) result[key] = obj;
+		});
+	});
+
+	return result;
+}
+
+var stooges = [{name: 'moe', age: 60}, {name: 'larry', age: 50}, {name: 'curly', age: 40}];
+console.log(indexBy(stooges, 'age'));
