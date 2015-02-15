@@ -499,5 +499,33 @@ var indexBy = function(list,iteratee){
 	return result;
 }
 
-var stooges = [{name: 'moe', age: 60}, {name: 'larry', age: 50}, {name: 'curly', age: 40}];
-console.log(indexBy(stooges, 'age'));
+//var stooges = [{name: 'moe', age: 60}, {name: 'larry', age: 50}, {name: 'curly', age: 40}];
+//console.log(indexBy(stooges, 'age'));
+
+/*	countBy_.countBy(list, iteratee, [context]) 
+Sorts a list into groups and returns a count for the number of objects in each group. Similar to groupBy, but instead of returning a list of values, returns a count for the number of values in that group.
+
+_.countBy([1, 2, 3, 4, 5], function(num) {
+  return num % 2 == 0 ? 'even': 'odd';
+});
+=> {odd: 3, even: 2}*/
+
+var countBy = function(list,iteratee){
+
+	var result = {};
+
+	//group the list into groups based on iteratee
+	each(list,function(val){
+		if(iteratee(val) in result){
+			result[iteratee(val)]++;
+		}else{
+			result[iteratee(val)] = 1;
+		}
+
+	});
+
+	return result;
+
+}
+
+console.log(countBy([1,2,3,4,5],function(num){return num%2 === 0 ? 'even': 'odd';}));
