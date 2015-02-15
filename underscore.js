@@ -521,11 +521,8 @@ var countBy = function(list,iteratee){
 		}else{
 			result[iteratee(val)] = 1;
 		}
-
 	});
-
 	return result;
-
 }
 
 //console.log(countBy([1,2,3,4,5],function(num){return num%2 === 0 ? 'even': 'odd';}));
@@ -548,3 +545,23 @@ var shuffle = function(list){
 }
 
 //console.log(shuffle([1,2,3,4,5,6]));
+
+/*
+sample_.sample(list, [n]) 
+Produce a random sample from the list. Pass a number to return n random elements from the list. Otherwise a single random item will be returned.
+
+_.sample([1, 2, 3, 4, 5, 6]);
+=> 4
+
+_.sample([1, 2, 3, 4, 5, 6], 3);
+=> [1, 6, 2]*/
+var sample = function(list,n){
+	if(n === undefined) n = 1;
+
+	shuffle(list);
+	list = list.slice(0,n);
+	return list;
+}
+
+console.log(sample([1,2,3,4,5,6],4));
+
