@@ -563,5 +563,70 @@ var sample = function(list,n){
 	return list;
 }
 
-console.log(sample([1,2,3,4,5,6],4));
+//console.log(sample([1,2,3,4,5,6],4));
 
+/*	toArray_.toArray(list) 
+Creates a real Array from the list (anything that can be iterated over). Useful for transmuting the arguments object.
+
+(function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+=> [2, 3, 4]*/
+
+var toArray = function(list){
+	var result = [];
+
+	if(Array.isArray(list)){
+		return list;
+	}
+	else if(typeof list === 'string'){
+		for(var i=0;i<list.length;i++){
+			result.push(list.charAt(i));
+		}
+	}else if(typeof list === 'object'){
+		for(var i in list){
+			result.push([i,list[i]]);
+		}
+	}
+
+	return result;
+
+}
+
+//console.log(toArray({a:1,b:2,c:3,d:4}));
+
+/*	size_.size(list) 
+Return the number of values in the list.
+
+_.size({one: 1, two: 2, three: 3});
+=> 3*/
+
+var size = function(list){
+	var result = 0;
+
+	each(list,function(val){
+		result++;
+	});
+
+	return result;
+}
+
+//console.log(size({one:1,two:2,three:3}));
+
+/*	partition_.partition(array, predicate) 
+Split array into two arrays: one whose elements all satisfy predicate and one whose elements all do not satisfy predicate.
+
+_.partition([0, 1, 2, 3, 4, 5], isOdd);
+=> [[1, 3, 5], [0, 2, 4]]*/
+
+var partition = function(array,predicate){
+	var result = [];
+	var counter = [];
+
+	each(array,function(val){
+		if(predicate(val)) {result.push(val);}
+		else {counter.push(val);}
+	});
+
+	return [result,counter];
+
+}
+//console.log(partition([0,1,2,3,4],function(val){return val % 2 !== 0;}));
