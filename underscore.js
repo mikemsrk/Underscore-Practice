@@ -433,3 +433,34 @@ var sortBy = function(list,iteratee){
 
 //console.log(sortBy([1,2,3,4,5,6],function(num){ return Math.sin(num);}));
 //console.log(sortBy({a:1,b:2,c:3,d:4,e:5,f:6},function(num){return Math.sin(num);}));
+
+/*	groupBy_.groupBy(list, iteratee, [context]) 
+Splits a collection into sets, grouped by the result of running each value through iteratee. If iteratee is a string instead of a function, groups by the property named by iteratee on each of the values.
+
+_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+=> {1: [1.3], 2: [2.1, 2.4]}
+
+_.groupBy(['one', 'two', 'three'], 'length');
+=> {3: ["one", "two"], 5: ["three"]}*/
+
+var groupBy = function(list,iteratee){
+
+	var that = {};
+
+	// run the iteratee with each item of the list
+	// check if the iteratee result is a key in results object
+	// if it already is a key, push original item onto the key
+	// if it is not, set it as key and push original item onto key
+
+	each(list,function(val){
+		if(iteratee(val) in that){
+			that[iteratee(val)].push(val);
+		}else{
+			that[iteratee(val)] = [val];
+		}
+	});
+	return that;
+}
+
+//console.log(groupBy([1.3,2.1,2.4],function(num){return Math.floor(num);}));
+//console.log(groupBy(['one','two','three'],function(val){return val.length;}));
