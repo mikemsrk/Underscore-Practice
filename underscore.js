@@ -528,4 +528,23 @@ var countBy = function(list,iteratee){
 
 }
 
-console.log(countBy([1,2,3,4,5],function(num){return num%2 === 0 ? 'even': 'odd';}));
+//console.log(countBy([1,2,3,4,5],function(num){return num%2 === 0 ? 'even': 'odd';}));
+
+/*	shuffle_.shuffle(list) 
+Returns a shuffled copy of the list, using a version of the Fisher-Yates shuffle.
+
+_.shuffle([1, 2, 3, 4, 5, 6]);
+=> [4, 1, 6, 3, 5, 2]*/
+
+var shuffle = function(list){
+
+	for(var i=0;i<list.length;i++){
+		var j = Math.floor(Math.random()*list.length);
+		var current = list[i];
+		list[i] = list[j];
+		list[j] = current;
+	}
+	return list;
+}
+
+//console.log(shuffle([1,2,3,4,5,6]));
