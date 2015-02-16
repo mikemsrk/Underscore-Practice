@@ -825,3 +825,51 @@ var intersection = function(arrays){
 }
 
 //console.log(intersection([1,2,3],[101,2,1,10],[2,1]));
+
+// difference_.difference(array, *others) 
+// Similar to without, but returns the values from array that are not present in the other arrays.
+
+// _.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+// => [1, 3, 4]
+
+var difference = function(array){
+	this.results = [];
+	var result = this.results;
+	for(var y=0;y<array.length;y++){
+		var val = array[y];
+
+		for(var i=1;i<arguments.length;i++){
+			var cur = arguments[i];
+			if(!contains(cur,val))result.push(val);
+		}
+	}
+	return result;
+}
+
+//console.log(difference([1,2,3,4,5],[5,2,10]));
+
+// uniq_.uniq(array, [isSorted], [iteratee]) Alias: unique 
+// Produces a duplicate-free version of the array, using === to test object equality. If you know in advance that the array is sorted, passing true for isSorted will run a much faster algorithm. If you want to compute unique items based on a transformation, pass an iteratee function.
+
+// _.uniq([1, 2, 1, 3, 1, 4]);
+// => [1, 2, 3, 4]
+
+var uniq = function(array){
+
+
+}
+
+// zip_.zip(*arrays) 
+// Merges together the values of each of the arrays with the values at the corresponding position. Useful when you have separate data sources that are coordinated through matching array indexes. If you're working with a matrix of nested arrays, _.zip.apply can transpose the matrix in a similar fashion.
+
+// _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+// => [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
+
+// _.zip.apply(_, arrayOfRowsOfData);
+// => arrayOfColumnsOfData
+
+var zip = function(){
+
+
+
+}
