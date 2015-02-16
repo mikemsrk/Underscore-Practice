@@ -944,15 +944,23 @@ var object = function(list){
 // console.log(object(['moe', 'larry', 'curly'], [30, 40, 50]));
 
 // indexOf_.indexOf(array, value, [isSorted]) 
-// Returns the index at which value can be found in the array, or -1 if value is not present in the array. If you're working with a large array, and you know that the array is already sorted, pass true for isSorted to use a faster binary search ... or, pass a number as the third argument in order to look for the first matching value in the array after the given index.
+// Returns the index at which value can be found in the array, or -1 if value is not present in the array. 
+// If you're working with a large array, and you know that the array is already sorted, pass true for isSorted to use a faster binary search ... or, pass a number as the third argument in order to look for the first matching value in the array after the given index.
 
 // _.indexOf([1, 2, 3], 2);
 // => 1
 
 var indexOf = function(array,value){
 
-
+	var index = -1;
+	if(arguments.length == 3){} // use faster index? wat 
+	for(var i=0;i<array.length;i++){
+		if(array[i] === value) index = i;
+	}
+	return index;
 }
+
+//console.log(indexOf([1,2,3],3));
 
 
 // lastIndexOf_.lastIndexOf(array, value, [fromIndex]) 
@@ -962,8 +970,45 @@ var indexOf = function(array,value){
 // => 4
 
 var lastIndexOf = function(array,value){
+	var index = -1;
+	for(var i=array.length-1;i>=0;i--){
+		if(array[i] === value) return i;
+	}
+	return index;
+}
 
+//console.log(lastIndexOf([1,2,3,1,2,3],2));
+
+// sortedIndex_.sortedIndex(list, value, [iteratee], [context]) 
+// Uses a binary search to determine the index at which the value should be inserted into the list in order to maintain the list's sorted order. If an iteratee function is provided, it will be used to compute the sort ranking of each value, including the value you pass. The iteratee may also be the string name of the property to sort by (eg. length).
+
+// _.sortedIndex([10, 20, 30, 40, 50], 35);
+// => 3
+
+// var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+// _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
+// => 1
+
+var sortedIndex = function(list,value,iteratee){
 
 
 }
 
+// range_.range([start], stop, [step]) 
+// A function to create flexibly-numbered lists of integers, handy for each and map loops. start, if omitted, defaults to 0; step defaults to 1. Returns a list of integers from start to stop, incremented (or decremented) by step, exclusive. Note that ranges that stop before they start are considered to be zero-length instead of negative — if you'd like a negative range, use a negative step.
+
+// _.range(10);
+// => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+// _.range(1, 11);
+// => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// _.range(0, 30, 5);
+// => [0, 5, 10, 15, 20, 25]
+// _.range(0, -10, -1);
+// => [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+// _.range(0);
+// => []
+
+var range = function(start,stop,step){
+
+	
+}
