@@ -909,3 +909,61 @@ for(var i=0;i<sArray.length;i++){
 }
 
 //console.log(zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]));
+
+
+// object_.object(list, [values]) 
+// Converts arrays into objects. Pass either a single list of [key, value] pairs, or a list of keys, and a list of values. If duplicate keys exist, the last value wins.
+
+// _.object(['moe', 'larry', 'curly'], [30, 40, 50]);
+// => {moe: 30, larry: 40, curly: 50}
+
+// _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+// => {moe: 30, larry: 40, curly: 50}
+
+var object = function(list){
+	//if arguments = 1, iterate thru the list and create object
+	//if arguments > 1, use 2 lists
+
+	var result = {};
+
+	if(arguments.length === 1){
+		//nested arrays
+		each(list,function(val){
+			result[val[0]] = val[1];
+		});
+	}else{
+		//separated
+		for(var i=0;i<arguments[0].length;i++){
+			result[arguments[0][i]] = arguments[1][i];
+		}
+	}
+	return result;
+}
+
+// console.log(object([['moe', 30], ['larry', 40], ['curly', 50]]));
+// console.log(object(['moe', 'larry', 'curly'], [30, 40, 50]));
+
+// indexOf_.indexOf(array, value, [isSorted]) 
+// Returns the index at which value can be found in the array, or -1 if value is not present in the array. If you're working with a large array, and you know that the array is already sorted, pass true for isSorted to use a faster binary search ... or, pass a number as the third argument in order to look for the first matching value in the array after the given index.
+
+// _.indexOf([1, 2, 3], 2);
+// => 1
+
+var indexOf = function(array,value){
+
+
+}
+
+
+// lastIndexOf_.lastIndexOf(array, value, [fromIndex]) 
+// Returns the index of the last occurrence of value in the array, or -1 if value is not present. Pass fromIndex to start your search at a given index.
+
+// _.lastIndexOf([1, 2, 3, 1, 2, 3], 2);
+// => 4
+
+var lastIndexOf = function(array,value){
+
+
+
+}
+
