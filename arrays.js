@@ -80,6 +80,22 @@ var compact = function(array){
 // => [1, 2, 3, [[4]]];
 
 var flatten = function(array,shallow){
+	this.result = [];
+	var result = this.result;
 
+	function deepFind(arr){
+		if(arr.length === 0) return;
+		else{
+			arr.forEach(function(val){
+				if(Array.isArray(val)) deepFind(val);
+				else result.push(val);
+			});
+		}
+	}
+
+	deepFind(array);
+	return result;
 
 }
+
+console.log(flatten([5,4,[[3]],2,[[[2],4],1]]));
