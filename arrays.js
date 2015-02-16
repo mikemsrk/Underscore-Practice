@@ -106,4 +106,37 @@ var flatten = function(array,shallow){
 
 }
 
-console.log(flatten([5,4,[[3]],2,[[[2],4],1]]));
+//console.log(flatten([5,4,[[3]],2,[[[2],4],1]]));
+
+// without_.without(array, *values) 
+// Returns a copy of the array with all instances of the values removed.
+
+// _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+// => [2, 3, 4]
+
+var without = function(array,values){
+
+}
+
+
+// union_.union(*arrays) 
+// Computes the union of the passed-in arrays: the list of unique items, in order, that are present in one or more of the arrays.
+
+// _.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+// => [1, 2, 3, 101, 10]
+
+var union = function(arrays){
+
+
+}
+
+// intersection_.intersection(*arrays) 
+// Computes the list of values that are the intersection of all the arrays. Each value in the result is present in each of the arrays.
+
+// _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+// => [1, 2]
+
+var intersection = function(arrays){
+
+	
+}

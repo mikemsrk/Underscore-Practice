@@ -1,1 +1,1 @@
-underscore practice for Hack Reactor
+underscore practice for hack reactor
