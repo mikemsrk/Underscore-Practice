@@ -773,9 +773,20 @@ var without = function(array){
 // => [1, 2, 3, 101, 10]
 
 var union = function(arrays){
+	var result = [];
 
+	for(var i=0;i<arguments.length;i++){
+		var cArray = arguments[i];
 
+		each(cArray,function(val){
+			if(!contains(result,val)) result.push(val);
+		});
+
+	}
+	return result;
 }
+
+//console.log(union([1,2,3],[101,2,1,10],[2,1]));
 
 // intersection_.intersection(*arrays) 
 // Computes the list of values that are the intersection of all the arrays. Each value in the result is present in each of the arrays.
@@ -784,6 +795,33 @@ var union = function(arrays){
 // => [1, 2]
 
 var intersection = function(arrays){
+	//take the longest array as base
+	//take each value in base, see if other arrays contain it,
+	//if so, add that value to results
+	var base;
+	var result = [];
+	var maxLength = 0;
+	var args = [];
 
+	for(var i=0;i<arguments.length;i++){
+		var cur = arguments[i];
+		args.push(cur);
+		if(cur.length > maxLength){
+			base = cur;
+			maxLength = cur.length;
+		}
+	}
 
+	each(base,function(val){
+		var hit = 0;
+		for(var i=0;i<args.length;i++){
+			var cur = args[i];
+			if(contains(cur,val)) hit++;
+		}
+		if(hit === args.length) result.push(val);
+	});
+
+	return result;
 }
+
+//console.log(intersection([1,2,3],[101,2,1,10],[2,1]));
