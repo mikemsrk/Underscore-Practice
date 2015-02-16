@@ -849,15 +849,24 @@ var difference = function(array){
 //console.log(difference([1,2,3,4,5],[5,2,10]));
 
 // uniq_.uniq(array, [isSorted], [iteratee]) Alias: unique 
-// Produces a duplicate-free version of the array, using === to test object equality. If you know in advance that the array is sorted, passing true for isSorted will run a much faster algorithm. If you want to compute unique items based on a transformation, pass an iteratee function.
+// Produces a duplicate-free version of the array, using === to test object equality. 
+// If you know in advance that the array is sorted, passing true for isSorted will run a much faster algorithm. If you want to compute unique items based on a transformation, pass an iteratee function.
 
 // _.uniq([1, 2, 1, 3, 1, 4]);
 // => [1, 2, 3, 4]
 
 var uniq = function(array){
+	var result = [];
 
+	for(var i=0;i<array.length;i++){
+		var cur = array[i];
+		if(!contains(result,cur)) result.push(cur);
+	}
 
+return result;
 }
+
+//console.log(uniq([1,2,1,3,1,4]));
 
 // zip_.zip(*arrays) 
 // Merges together the values of each of the arrays with the values at the corresponding position. Useful when you have separate data sources that are coordinated through matching array indexes. If you're working with a matrix of nested arrays, _.zip.apply can transpose the matrix in a similar fashion.
