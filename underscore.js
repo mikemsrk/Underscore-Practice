@@ -869,7 +869,9 @@ return result;
 //console.log(uniq([1,2,1,3,1,4]));
 
 // zip_.zip(*arrays) 
-// Merges together the values of each of the arrays with the values at the corresponding position. Useful when you have separate data sources that are coordinated through matching array indexes. If you're working with a matrix of nested arrays, _.zip.apply can transpose the matrix in a similar fashion.
+// Merges together the values of each of the arrays with the values at the corresponding position. 
+// Useful when you have separate data sources that are coordinated through matching array indexes. 
+// If you're working with a matrix of nested arrays, _.zip.apply can transpose the matrix in a similar fashion.
 
 // _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
 // => [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
@@ -879,6 +881,31 @@ return result;
 
 var zip = function(){
 
+var minArgs; // smallest array length
+var sArray; //smallest array
+var args = [];
+var result = [];
 
+for(var i=0;i<arguments.length;i++){
+	var cur = arguments[i];
+	args.push(cur);
+
+	if(minArgs === undefined) minArgs = cur.length;
+	if(cur.length <= minArgs){
+		minArgs = cur.length;
+		sArray = cur;
+	}
+}
+
+for(var i=0;i<sArray.length;i++){
+	var temp = [];
+	each(args,function(arg){
+		temp.push(arg[i]);
+	});
+	result.push(temp);
+}
+	return result;
 
 }
+
+//console.log(zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]));
