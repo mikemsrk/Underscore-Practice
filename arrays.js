@@ -87,7 +87,15 @@ var flatten = function(array,shallow){
 		if(arr.length === 0) return;
 		else{
 			arr.forEach(function(val){
-				if(Array.isArray(val)) deepFind(val);
+				if(Array.isArray(val)) {
+					if(shallow){
+						val.forEach(function(sval){
+							result.push(sval);
+						});
+					}else{
+						deepFind(val);
+					}
+				}
 				else result.push(val);
 			});
 		}
