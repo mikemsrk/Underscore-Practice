@@ -749,10 +749,21 @@ var flatten = function(array,shallow){
 // _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
 // => [2, 3, 4]
 
-var without = function(array,values){
+var without = function(array){
+	var result = array.slice();
 
+	for(var i=1;i<arguments.length;i++){
+		var current = arguments[i];
+		while(result.indexOf(current) !== -1){
+			var position = result.indexOf(current);
+			result.splice(position,1);
+		}
+	}
 
+	return result;
 }
+
+//console.log(without([1,2,1,0,3,1,4],0,1,3));
 
 
 // union_.union(*arrays) 
