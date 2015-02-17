@@ -1141,11 +1141,41 @@ var invert = function(obj){
 
 // _.functions(_);
 // => ["all", "any", "bind", "bindAll", "clone", "compact", "compose" ...
+var functions = function(objc){
 
+	function getMethods(obj) { // copied from stackoverflow
+	  var result = [];
+	  for (var id in obj) {
+	    try {
+	      if (typeof(obj[id]) == "function") {
+	        result.push(id + ": " + obj[id].toString());
+	      }
+	    } catch (err) {
+	      result.push(id + ": inaccessible");
+	    }
+	  }
+	  return result;
+	}
 
+	return getMethods(objc);
+}
+
+//console.log(functions({}));
 
 // extend_.extend(destination, *sources) 
 // Copy all of the properties in the source objects over to the destination object, and return the destination object. It's in-order, so the last source will override properties of the same name in previous arguments.
 
 // _.extend({name: 'moe'}, {age: 50});
 // => {name: 'moe', age: 50}
+
+var extend = function(destination){
+	for(var i=1;i<arguments.length;i++){
+		var cur = arguments[i];
+		for(var y in cur){
+			destination[y] = cur[y];
+		}
+	}
+	return destination;
+}
+
+console.log(extend({name:'moe'},{age:50}));
