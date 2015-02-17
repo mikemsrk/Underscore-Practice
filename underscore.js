@@ -980,7 +980,9 @@ var lastIndexOf = function(array,value){
 //console.log(lastIndexOf([1,2,3,1,2,3],2));
 
 // sortedIndex_.sortedIndex(list, value, [iteratee], [context]) 
-// Uses a binary search to determine the index at which the value should be inserted into the list in order to maintain the list's sorted order. If an iteratee function is provided, it will be used to compute the sort ranking of each value, including the value you pass. The iteratee may also be the string name of the property to sort by (eg. length).
+// Uses a binary search to determine the index at which the value should be inserted into the list in order to maintain the list's sorted order. 
+// If an iteratee function is provided, it will be used to compute the sort ranking of each value, including the value you pass. 
+// The iteratee may also be the string name of the property to sort by (eg. length).
 
 // _.sortedIndex([10, 20, 30, 40, 50], 35);
 // => 3
@@ -991,8 +993,43 @@ var lastIndexOf = function(array,value){
 
 var sortedIndex = function(list,value,iteratee){
 
+	if(iteratee === undefined) iteratee = function(val){return val;};
+	var asc; // true for ascending, false for descending
+	var index;
+	
+	for(var i=0;i<list.length-1;i++){
+		//first determine if the list is ascending or descending order
+		var cur = iteratee(list[i]);
+		var next = iteratee(list[i+1]); 
 
+		if(cur < next) asc = true;
+		else if(next < cur) asc = false;
+	}
+
+	//second iterate over the list
+	for(var i=0;i<list.length-1;i++){
+		var cur = iteratee(list[i]);
+		var next = iteratee(list[i+1]);
+		var test = iteratee(value);
+
+		if(asc){ //ascending
+			if(test >= cur && test < next) return i+1;
+			else if(test < cur) return 0;
+			else if(test >= next) index = list.length;
+		}else{
+			if(test <= cur && test > next) return i+1;
+			else if(test > cur) return 0;
+			else if(test <= next) index = list.length;
+		}
+	}
+	return index;
 }
+
+//console.log(sortedIndex([10,35,35,40,50],35));
+//console.log(sortedIndex([50,40,30,20,10],35));
+
+//var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 50}, {name: 'brad', age: 60}];
+//console.log(sortedIndex(stooges,{name:'larry',age:45},function(val){return val.age;}));
 
 // range_.range([start], stop, [step]) 
 // A function to create flexibly-numbered lists of integers, handy for each and map loops. start, if omitted, defaults to 0; step defaults to 1. Returns a list of integers from start to stop, incremented (or decremented) by step, exclusive. Note that ranges that stop before they start are considered to be zero-length instead of negative — if you'd like a negative range, use a negative step.
