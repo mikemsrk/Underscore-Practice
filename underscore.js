@@ -1,3 +1,4 @@
+// Section 1 - Collections
 /*
 each_.each(list, iteratee, [context]) Alias: forEach 
 Iterates over a list of elements, yielding each in turn to an iteratee function. 
@@ -631,7 +632,7 @@ var partition = function(array,predicate){
 }
 //console.log(partition([0,1,2,3,4],function(val){return val % 2 !== 0;}));
 
-// Arrays
+// Section 2 - Arrays
 
 /*	first_.first(array, [n]) Alias: head, take 
 Returns the first element of an array. Passing n will return the first n elements of the array.
@@ -1065,3 +1066,55 @@ var range = function(start,stop,step){
 // console.log(range(0,30,5));
 // console.log(range(0,-10,-1));
 // console.log(range(0));
+
+//Section 4 - Objects
+
+// keys_.keys(object) 
+// Retrieve all the names of the object's properties.
+
+// _.keys({one: 1, two: 2, three: 3});
+// => ["one", "two", "three"]
+
+var keys = function(obj){
+	var result = [];
+	for(var i in obj){
+		result.push(i);
+	}
+	return result;
+}
+// console.log(keys({one:1,two:2,three:3}));
+
+// values_.values(object) 
+// Return all of the values of the object's properties.
+
+// _.values({one: 1, two: 2, three: 3});
+// => [1, 2, 3]
+
+var values = function(obj){
+	var result = [];
+	for(var i in obj){
+		result.push(obj[i]);
+	}
+	return result;
+}
+
+// console.log(values({one:1,two:2,three:3}));
+
+// pairs_.pairs(object) 
+// Convert an object into a list of [key, value] pairs.
+
+// _.pairs({one: 1, two: 2, three: 3});
+// => [["one", 1], ["two", 2], ["three", 3]]
+
+var pairs = function(obj){
+	var result = [];
+	for(var i in obj){
+		var temp = [];
+		temp.push(i);
+		temp.push(obj[i]);
+		result.push(temp);
+	}
+	return result;
+}
+
+// console.log(pairs({one:1,two:2,three:3}));
