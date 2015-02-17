@@ -1052,9 +1052,7 @@ var range = function(start,stop,step){
 		start = 0;
 		step = 1;
 	}else if(arguments.length === 2){
-		if(step === undefined){
 			step = 1;
-		}
 	}
 	while(start !== stop){
 		result.push(start);
