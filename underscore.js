@@ -1118,3 +1118,34 @@ var pairs = function(obj){
 }
 
 // console.log(pairs({one:1,two:2,three:3}));
+
+// invert_.invert(object) 
+// Returns a copy of the object where the keys have become the values and the values the keys. For this to work, all of your object's values should be unique and string serializable.
+
+// _.invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"});
+// => {Moses: "Moe", Louis: "Larry", Jerome: "Curly"};
+
+var invert = function(obj){
+	var result = {};
+	for(var i in obj){
+		result[obj[i]] = i; 
+	}
+
+	return result;
+
+}
+//console.log(invert({moe:'moses',larry:'louis',curly:'jerome'}));
+
+// functions_.functions(object) Alias: methods 
+// Returns a sorted list of the names of every method in an object — that is to say, the name of every function property of the object.
+
+// _.functions(_);
+// => ["all", "any", "bind", "bindAll", "clone", "compact", "compose" ...
+
+
+
+// extend_.extend(destination, *sources) 
+// Copy all of the properties in the source objects over to the destination object, and return the destination object. It's in-order, so the last source will override properties of the same name in previous arguments.
+
+// _.extend({name: 'moe'}, {age: 50});
+// => {name: 'moe', age: 50}
