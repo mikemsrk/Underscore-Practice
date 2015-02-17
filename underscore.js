@@ -996,7 +996,7 @@ var sortedIndex = function(list,value,iteratee){
 	if(iteratee === undefined) iteratee = function(val){return val;};
 	var asc; // true for ascending, false for descending
 	var index;
-	
+
 	for(var i=0;i<list.length-1;i++){
 		//first determine if the list is ascending or descending order
 		var cur = iteratee(list[i]);
@@ -1046,6 +1046,24 @@ var sortedIndex = function(list,value,iteratee){
 // => []
 
 var range = function(start,stop,step){
-
-	
+	var result = [];
+	if(arguments.length === 1){
+		stop = arguments[0];
+		start = 0;
+		step = 1;
+	}else if(arguments.length === 2){
+		if(step === undefined){
+			step = 1;
+		}
+	}
+	while(start !== stop){
+		result.push(start);
+		start += step;
+	}
+	return result;
 }
+// console.log(range(10));
+// console.log(range(1,11));
+// console.log(range(0,30,5));
+// console.log(range(0,-10,-1));
+// console.log(range(0));
