@@ -1226,7 +1226,10 @@ console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, ob
 // });
 // => {name: 'moe', userid: 'moe1'}
 
+var omit = function(object){
 
+
+}
 
 
 
@@ -1237,6 +1240,9 @@ console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, ob
 // _.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
 // => {flavor: "chocolate", sprinkles: "lots"}
 
+var defaults = function(object){
+	
+}
 
 
 
