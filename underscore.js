@@ -1178,4 +1178,68 @@ var extend = function(destination){
 	return destination;
 }
 
-console.log(extend({name:'moe'},{age:50}));
+//console.log(extend({name:'moe'},{age:50}));
+
+
+// pick_.pick(object, *keys) 
+// Return a copy of the object, filtered to only have values for the whitelisted keys (or array of valid keys). Alternatively accepts a predicate indicating which keys to pick.
+
+// _.pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age');
+// => {name: 'moe', age: 50}
+// _.pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+//   return _.isNumber(value);
+// });
+// => {age: 50}
+
+var pick = function(object,iteratee){
+	var result = {};
+	var args = [].slice.apply(arguments); //turn arguments into real array
+
+	if(typeof args[1] === 'function'){ //if function passed in as argument
+			//do function stuff
+			return iteratee(object);
+	}else{	//if valid keys are passed in as arguments
+		for(var key in object){
+				for(var i=1;i<args.length;i++){
+					var cur = args[i];
+					if(cur === key){
+						result[key] = object[key];
+					}
+				}
+		} // end outer for
+	}//end else
+
+	return result;
+}
+
+console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age'));
+console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {return value;}));
+
+
+// omit_.omit(object, *keys) 
+// Return a copy of the object, filtered to omit the blacklisted keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
+
+// _.omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
+// => {name: 'moe', age: 50}
+// _.omit({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+//   return _.isNumber(value);
+// });
+// => {name: 'moe', userid: 'moe1'}
+
+
+
+
+
+// defaults_.defaults(object, *defaults) 
+// Fill in undefined properties in object with the first value present in the following list of defaults objects.
+
+// var iceCream = {flavor: "chocolate"};
+// _.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
+// => {flavor: "chocolate", sprinkles: "lots"}
+
+
+
+
+
+
+
