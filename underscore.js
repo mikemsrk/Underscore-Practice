@@ -1191,29 +1191,19 @@ var extend = function(destination){
 // });
 // => {age: 50}
 
-var pick = function(object,iteratee){
-	var result = {};
-	var args = [].slice.apply(arguments); //turn arguments into real array
+var pick = function(obj){
 
-	if(typeof args[1] === 'function'){ //if function passed in as argument
-			//do function stuff
-			return iteratee(object);
-	}else{	//if valid keys are passed in as arguments
-		for(var key in object){
-				for(var i=1;i<args.length;i++){
-					var cur = args[i];
-					if(cur === key){
-						result[key] = object[key];
-					}
-				}
-		} // end outer for
-	}//end else
+	var copy = {};
+    var keys = [].slice.apply(arguments); 
+    each(keys, function(key) {
+      if (key in obj) copy[key] = obj[key];
+    });
+    return copy;
 
-	return result;
 }
 
-console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age'));
-console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {return value;}));
+//console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age'));
+//console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {return value;}));
 
 
 // omit_.omit(object, *keys) 
@@ -1227,9 +1217,21 @@ console.log(pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, ob
 // => {name: 'moe', userid: 'moe1'}
 
 var omit = function(object){
+	var result = {};
 
+	var args = [].slice.apply(arguments);
+
+	for(var i=1;i<args.length;i++){
+		var cur = args[i];
+		for(var key in object){
+			if(key !== cur) result[key] = object[key];
+		}
+	}
+
+	return result;
 
 }
+//console.log(omit({name: 'moe',age:50, userid: 'moe1'},'userid'));
 
 
 
