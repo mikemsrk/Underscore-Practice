@@ -1234,7 +1234,6 @@ var omit = function(object){
 //console.log(omit({name: 'moe',age:50, userid: 'moe1'},'userid'));
 
 
-
 // defaults_.defaults(object, *defaults) 
 // Fill in undefined properties in object with the first value present in the following list of defaults objects.
 
@@ -1243,8 +1242,28 @@ var omit = function(object){
 // => {flavor: "chocolate", sprinkles: "lots"}
 
 var defaults = function(object){
-	
+
+	//iterate over the arguments from 1
+	//check if each key in each argument object is present in the original object,
+	//if it is, ignore, if it's not, add key and value.
+	//return adjusted original
+
+	var args = [].slice.apply(arguments);
+
+	for(var i=1;i<args.length;i++){
+		var curObj = args[i];
+		for(var k in curObj){
+			if(k in object){}
+			else{
+				object[k] = curObj[k];
+			}
+		}
+	}
+	return object;
 }
+
+//var iceCream = {flavor: "chocolate"};
+//console.log(defaults(iceCream, {flavor:"vanilla", sprinkles: "lots"}));
 
 
 
