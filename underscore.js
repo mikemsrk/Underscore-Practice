@@ -1266,7 +1266,39 @@ var defaults = function(object){
 //console.log(defaults(iceCream, {flavor:"vanilla", sprinkles: "lots"}));
 
 
+// clone_.clone(object) 
+// Create a shallow-copied clone of the provided plain object. Any nested objects or arrays will be copied by reference, not duplicated.
+
+// _.clone({name: 'moe'});
+// => {name: 'moe'};
+
+var clone = function(obj){
+	var result = {};
+
+	for(var i in obj){
+		result[i] = obj[i];
+	}
+	return result;
+}
+
+//console.log(clone({name:'moe'}));
+
+// tap_.tap(object, interceptor) 
+// Invokes interceptor with the object, and then returns object. The primary purpose of this method is to "tap into" a method chain, in order to perform operations on intermediate results within the chain.
+
+// _.chain([1,2,3,200])
+//   .filter(function(num) { return num % 2 == 0; })
+//   .tap(alert)
+//   .map(function(num) { return num * num })
+//   .value();
+// => // [2, 200] (alerted)
+// => [4, 40000]
 
 
 
+// has_.has(object, key) 
+// Does the object contain the given key? Identical to object.hasOwnProperty(key), but uses a safe reference to the hasOwnProperty function, in case it's been overridden accidentally.
+
+// _.has({a: 1, b: 2, c: 3}, "b");
+// => true
 
