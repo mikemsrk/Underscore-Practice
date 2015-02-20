@@ -1314,3 +1314,34 @@ var has = function(object,key){
 	return false;
 }
 //console.log(has({a:1,b:2,c:3},'b'));
+
+// property_.property(key) 
+// Returns a function that will itself return the key property of any passed-in object.
+
+// var stooge = {name: 'moe'};
+// 'moe' === _.property('name')(stooge);
+// => true
+
+var property = function(key){
+
+	return function(obj){
+		for(var i in obj){
+			if(key === i) return true;
+		}
+	}
+}
+
+//var stooge = {name: 'moe'};
+//console.log(property('name')(stooge));
+
+// propertyOf_.propertyOf(object) 
+// Inverse of _.property. Takes an object and returns a function which will return the value of a provided property.
+
+// var stooge = {name: 'moe'};
+// _.propertyOf(stooge)('name');
+// => 'moe'
+
+var propertyOf = function(object){
+
+
+}
