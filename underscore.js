@@ -1343,5 +1343,11 @@ var property = function(key){
 
 var propertyOf = function(object){
 
-
+	return function(key){
+		for(var i in object){
+			if(key === i) return true;
+		}
+	}
 }
+//var stooge = {name: 'moe'};
+//console.log(propertyOf(stooge)('name'));
