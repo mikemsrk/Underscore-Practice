@@ -1294,6 +1294,10 @@ var clone = function(obj){
 // => // [2, 200] (alerted)
 // => [4, 40000]
 
+var tap = function(obj,interceptor){
+
+	return interceptor(obj);
+}
 
 
 // has_.has(object, key) 
@@ -1302,3 +1306,11 @@ var clone = function(obj){
 // _.has({a: 1, b: 2, c: 3}, "b");
 // => true
 
+var has = function(object,key){
+
+	for(var i in object){
+		if(key === i)return true;
+	}
+	return false;
+}
+//console.log(has({a:1,b:2,c:3},'b'));
