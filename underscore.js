@@ -1489,3 +1489,10 @@ var isArray = function(object){
 // => true
 // _.isObject(1);
 // => false
+
+var isObject = function(value){
+	return typeof value === 'object';
+}
+
+//console.log(isObject({}));
+//console.log(isObject(1));
