@@ -1553,10 +1553,12 @@ var isNumber = function(object){
 // _.isFinite(-Infinity);
 // => false
 
-var isFinite = function(object){
-
-
+var _isFinite = function(object){
+	return isFinite(object);
 }
+//console.log(_isFinite(5));
+//console.log(_isFinite(Infinity));
+
 // isBoolean_.isBoolean(object) 
 // Returns true if object is either true or false.
 
