@@ -1522,9 +1522,13 @@ var isFunction = function(object){
 }
 //console.log(isFunction(function(){}));
 
-
 // isString_.isString(object) 
 // Returns true if object is a String.
 
 // _.isString("moe");
 // => true
+
+var isString = function(object){
+	return typeof object === 'string';
+}
+//console.log(isString('hello'));
