@@ -1453,3 +1453,34 @@ var isEmpty = function(object){
 
 //console.log(isEmpty([1,2,3]));
 //console.log(isEmpty({}));
+
+// isElement_.isElement(object) 
+// Returns true if object is a DOM element.
+
+// _.isElement(jQuery('body')[0]);
+// => true
+
+var isElement = function(object){
+	return !!(object && object.nodeType === 1);
+}
+
+//console.log(isElement({}));
+
+
+// isArray_.isArray(object) 
+// Returns true if object is an Array.
+
+// (function(){ return _.isArray(arguments); })();
+// => false
+// _.isArray([1,2,3]);
+// => true
+
+
+
+// isObject_.isObject(value) 
+// Returns true if value is an Object. Note that JavaScript arrays and functions are objects, while (normal) strings and numbers are not.
+
+// _.isObject({});
+// => true
+// _.isObject(1);
+// => false
