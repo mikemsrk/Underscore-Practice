@@ -1532,3 +1532,47 @@ var isString = function(object){
 	return typeof object === 'string';
 }
 //console.log(isString('hello'));
+
+// isNumber_.isNumber(object) 
+// Returns true if object is a Number (including NaN).
+
+// _.isNumber(8.4 * 5);
+// => true
+
+var isNumber = function(object){
+	return typeof object === 'number' || typeof object === 'NaN';
+}
+//console.log(isNumber(NaN));
+
+// isFinite_.isFinite(object) 
+// Returns true if object is a finite Number.
+
+// _.isFinite(-101);
+// => true
+
+// _.isFinite(-Infinity);
+// => false
+
+var isFinite = function(object){
+
+
+}
+// isBoolean_.isBoolean(object) 
+// Returns true if object is either true or false.
+
+// _.isBoolean(null);
+// => false
+
+var isBoolean = function(object){
+
+
+}
+// isDate_.isDate(object) 
+// Returns true if object is a Date.
+
+// _.isDate(new Date());
+// => true
+var isDate = function(object){
+
+
+}
