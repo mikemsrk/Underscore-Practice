@@ -1408,8 +1408,8 @@ var isEqual = function(object,other){
 
 }
 
-var stooge = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
-var clone  = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
+//var stooge = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
+//var clone  = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
 
 //console.log(isEqual(stooge,clone));
 //console.log(stooge === clone);
@@ -1423,10 +1423,17 @@ var clone  = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
 // => true
 
 var isMatch = function(object,properties){
-
-
+	for(var a in object){
+		for(var b in properties){
+			if(a === b){
+				if(object[a] === properties[b])return true;
+			}
+		}
+	}
+	return false;
 }
-
+//var stooge = {name:'moe',age:32};
+//console.log(isMatch(stooge,{age:32}));
 
 
 // isEmpty_.isEmpty(object) 
