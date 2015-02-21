@@ -1351,3 +1351,94 @@ var propertyOf = function(object){
 }
 //var stooge = {name: 'moe'};
 //console.log(propertyOf(stooge)('name'));
+
+// isEqual_.isEqual(object, other) 
+// Performs an optimized deep comparison between the two objects, to determine if they should be considered equal.
+
+// var stooge = {name: 'moe', luckyNumbers: [13, 27, 34]};
+// var clone  = {name: 'moe', luckyNumbers: [13, 27, 34]};
+// stooge == clone;
+// => false
+// _.isEqual(stooge, clone);
+// => true
+
+var isEqual = function(object,other){
+
+	//first check the length of keys and keynames see if they match
+	if(keys(object).length !== keys(other).length) return false;
+
+	var keysA = keys(object);
+	var keysB = keys(other);
+
+	for(var i=0;i<keysA.length;i++){
+		if(keysA[i] !== keysB[i]) return false;
+	}
+
+	//get a full count of all the elements inside objects/arrays
+	var count = 0;
+
+	var deepCount = function(obj){
+		if(typeof obj !== 'object'){ //if simple type
+			count++;
+		}else{ //if object or array, keep running this
+			each(obj,function(val){
+				deepCount(val);
+			});
+		}
+	}
+	deepCount(object);
+
+	//now run the comparison between all elements between 2 objects, and get the number of matches
+	var hit = 0;
+	var deepEqual = function(objA,objB){
+		if(objA === objB) hit++;
+		else{
+			each(objA,function(a){
+				each(objB,function(b){
+					return deepEqual(a,b);
+				});
+			});
+		}
+	}
+
+	deepEqual(object,other);
+
+	//finally return the count vs. hits
+	return count === hit;
+
+}
+
+var stooge = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
+var clone  = {name: 'moe', luckyNumbers: [13, [27,20], 34], random:5};
+
+//console.log(isEqual(stooge,clone));
+//console.log(stooge === clone);
+
+
+// isMatch_.isMatch(object, properties) 
+// Tells you if the keys and values in properties are contained in object.
+
+// var stooge = {name: 'moe', age: 32};
+// _.isMatch(stooge, {age: 32});
+// => true
+
+var isMatch = function(object,properties){
+
+
+}
+
+
+
+// isEmpty_.isEmpty(object) 
+// Returns true if an enumerable object contains no values (no enumerable own-properties). For strings and array-like objects _.isEmpty checks if the length property is 0.
+
+// _.isEmpty([1, 2, 3]);
+// => false
+// _.isEmpty({});
+// => true
+
+
+var isEmpty = function(object){
+
+
+}
