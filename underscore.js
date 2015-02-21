@@ -1475,7 +1475,12 @@ var isElement = function(object){
 // _.isArray([1,2,3]);
 // => true
 
+var isArray = function(object){
+	return Array.isArray(object);
+}
 
+//console.log(isArray([1,2,3]));
+//console.log(isArray({}));
 
 // isObject_.isObject(value) 
 // Returns true if value is an Object. Note that JavaScript arrays and functions are objects, while (normal) strings and numbers are not.
