@@ -1566,9 +1566,12 @@ var _isFinite = function(object){
 // => false
 
 var isBoolean = function(object){
-
-
+	return typeof object === 'boolean';
 }
+//console.log(isBoolean(5));
+//console.log(isBoolean(false));
+
+
 // isDate_.isDate(object) 
 // Returns true if object is a Date.
 
