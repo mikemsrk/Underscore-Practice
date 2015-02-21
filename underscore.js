@@ -1446,6 +1446,10 @@ var isMatch = function(object,properties){
 
 
 var isEmpty = function(object){
-
-
+	if(object.length === 0)return true;
+	if(keys(object).length === 0) return true;
+	return false;
 }
+
+//console.log(isEmpty([1,2,3]));
+//console.log(isEmpty({}));
