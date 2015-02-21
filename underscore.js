@@ -1496,3 +1496,30 @@ var isObject = function(value){
 
 //console.log(isObject({}));
 //console.log(isObject(1));
+
+// isArguments_.isArguments(object) 
+// Returns true if object is an Arguments object.
+
+// (function(){ return _.isArguments(arguments); })(1, 2, 3);
+// => true
+// _.isArguments([1,2,3]);
+// => false
+
+var isArguments = function(object){
+	return has(object,'callee');
+}
+//console.log((function(){ return isArguments(arguments); })(1, 2, 3));
+
+
+// isFunction_.isFunction(object) 
+// Returns true if object is a Function.
+
+// _.isFunction(alert);
+// => true
+
+
+// isString_.isString(object) 
+// Returns true if object is a String.
+
+// _.isString("moe");
+// => true
