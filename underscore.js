@@ -1517,6 +1517,11 @@ var isArguments = function(object){
 // _.isFunction(alert);
 // => true
 
+var isFunction = function(object){
+	return typeof object === 'function';
+}
+//console.log(isFunction(function(){}));
+
 
 // isString_.isString(object) 
 // Returns true if object is a String.
