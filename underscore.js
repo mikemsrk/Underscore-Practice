@@ -1588,8 +1588,7 @@ var isDate = function(object){
 // _.isRegExp(/moe/);
 // => true
 
-var isRegExp = function(object){
-
+var isRegExp = function(object){  
 	return object instanceof RegExp;
 }
 
@@ -1605,6 +1604,16 @@ var isRegExp = function(object){
 // }
 // => true
 
+var isError = function(object){
+	return object instanceof Error;
+}
+
+// try{
+// 	throw new TypeError("Example");
+// }catch(e){
+// 	console.log(isError(e));
+// 	console.log(e);
+// }
 
 // isNaN_.isNaN(object) 
 // Returns true if object is NaN.
