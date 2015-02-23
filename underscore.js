@@ -1656,7 +1656,7 @@ var isNull = function(object){
 // => true
 
 var isUndefined = function(value){
-
-
+	return value === undefined;
 }
+//console.log(isUndefined(undefined));
 
