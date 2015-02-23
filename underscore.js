@@ -1578,8 +1578,9 @@ var isBoolean = function(object){
 // _.isDate(new Date());
 // => true
 var isDate = function(object){
-	return typeof object === 'date';
+	return object instanceof Date;
 }
-console.log(typeof Date());
-console.log(typeof (new Date()));
+//console.log(isDate(new Date()));
+
+
 
