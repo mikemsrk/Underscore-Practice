@@ -1582,5 +1582,38 @@ var isDate = function(object){
 }
 //console.log(isDate(new Date()));
 
+// isRegExp_.isRegExp(object) 
+// Returns true if object is a RegExp.
 
+// _.isRegExp(/moe/);
+// => true
+
+var isRegExp = function(object){
+
+	return object instanceof RegExp;
+}
+
+//console.log(isRegExp(/moe/));
+
+// isError_.isError(object) 
+// Returns true if object inherrits from an Error.
+
+// try {
+//   throw new TypeError("Example");
+// } catch (o_O) {
+//   _.isError(o_O)
+// }
+// => true
+
+
+// isNaN_.isNaN(object) 
+// Returns true if object is NaN.
+// Note: this is not the same as the native isNaN function, which will also return true for many other not-number values, such as undefined.
+
+// _.isNaN(NaN);
+// => true
+// isNaN(undefined);
+// => true
+// _.isNaN(undefined);
+// => false
 
