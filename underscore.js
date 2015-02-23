@@ -1626,3 +1626,13 @@ var isError = function(object){
 // _.isNaN(undefined);
 // => false
 
+var _isNaN = function(object){
+	return typeof object === 'number';
+}
+
+// console.log(_isNaN(NaN));
+// console.log(_isNaN(undefined));
+// console.log(isNaN(undefined));
+
+
+
