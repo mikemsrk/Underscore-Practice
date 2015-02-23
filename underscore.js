@@ -1634,5 +1634,29 @@ var _isNaN = function(object){
 // console.log(_isNaN(undefined));
 // console.log(isNaN(undefined));
 
+// isNull_.isNull(object) 
+// Returns true if the value of object is null.
 
+// _.isNull(null);
+// => true
+// _.isNull(undefined);
+// => false
+
+var isNull = function(object){
+	return object === null;
+}
+
+// console.log(isNull(null));
+// console.log(isNull(undefined));
+
+// isUndefined_.isUndefined(value) 
+// Returns true if value is undefined.
+
+// _.isUndefined(window.missingVariable);
+// => true
+
+var isUndefined = function(value){
+
+
+}
 
