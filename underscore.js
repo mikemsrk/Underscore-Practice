@@ -1660,3 +1660,22 @@ var isUndefined = function(value){
 }
 //console.log(isUndefined(undefined));
 
+// times_.times(n, iteratee, [context]) 
+// Invokes the given iteratee function n times. Each invocation of iteratee is called with an index argument. Produces an array of the returned values. 
+// Note: this example uses the chaining syntax.
+
+// _(3).times(function(n){ genie.grantWishNumber(n); });
+
+var times = function(n, iteratee){
+	var count = 0;
+	while(n >= count){
+		iteratee;
+		count++;
+	}
+}
+// random_.random(min, max) 
+// Returns a random integer between min and max, inclusive. If you only pass one argument, it will return a number between 0 and that number.
+
+// _.random(0, 100);
+// => 42
+
