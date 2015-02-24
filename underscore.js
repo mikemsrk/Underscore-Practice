@@ -1678,4 +1678,9 @@ var times = function(n, iteratee){
 
 // _.random(0, 100);
 // => 42
+var random = function(min,max){
+
+	return Math.floor(Math.random(min,max)*100);
+}
+//console.log(random(0,100));
 
