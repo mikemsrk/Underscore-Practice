@@ -1,1 +1,1 @@
-underscore practice for hack reactor
+practice rewriting (very primitively) underscore library
