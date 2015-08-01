@@ -1,1 +1,1 @@
-practice rewriting (very primitively) underscore library
+This repository is used for learning and practicing with the popular Underscore JS library.
